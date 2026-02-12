@@ -132,6 +132,13 @@
       <p><strong>Editorial:</strong> Summary here.</p>
       <p><strong>Local:</strong> Summary here.</p>
     </div>
+    
+  </div>
+  <div class="card">
+  <h2>Upload Newspaper PDF</h2>
+  <input type="file" id="pdfFile" accept="application/pdf">
+  <button onclick="uploadPDF()">Analyze</button>
+  <pre id="summaryOutput"></pre>
   </div>
 
   <!-- ARCHIVE -->
@@ -173,6 +180,43 @@
 
   showSection('home');
 </script>
+  </script>
+
+<script>
+async function uploadPDF() {
+  const fileInput = document.getElementById("pdfFile");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Please select a PDF file.");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = async function () {
+    const base64 = reader.result.split(",")[1];
+
+    const response = await fetch(
+      "https://news-ai-backend-smoky.vercel.app/api/summarize",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ file: base64 }),
+      }
+    );
+
+    const data = await response.json();
+    document.getElementById("summaryOutput").textContent =
+      data.summary || data.error;
+  };
+
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
