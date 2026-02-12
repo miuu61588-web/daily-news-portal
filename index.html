@@ -1,55 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Daily News Archive</title>
+  <title>Public News Archive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
       margin: 0;
       padding: 0;
+      color: #1f2937;
     }
 
     header {
-      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      background: #111827;
       color: white;
-      padding: 25px;
+      padding: 30px 20px;
       text-align: center;
     }
 
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #9ca3af;
+    }
+
     .container {
-      max-width: 900px;
-      margin: 30px auto;
+      max-width: 1000px;
+      margin: 40px auto;
       padding: 20px;
     }
 
-    .card {
+    .section {
       background: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
     h2 {
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
+      margin-top: 0;
+      border-left: 4px solid #2563eb;
+      padding-left: 10px;
+    }
+
+    .month-title {
+      margin-top: 25px;
+      font-weight: bold;
+      color: #2563eb;
     }
 
     .paper-link {
       display: block;
-      margin: 10px 0;
-      padding: 12px;
-      background: #e0e7ff;
+      padding: 10px 15px;
+      margin: 8px 0;
+      background: #f3f4f6;
       border-radius: 8px;
       text-decoration: none;
-      color: #1e3a8a;
-      font-weight: bold;
+      color: #111827;
+      transition: 0.3s;
     }
 
     .paper-link:hover {
-      background: #c7d2fe;
+      background: #e5e7eb;
+    }
+
+    .category {
+      margin-bottom: 15px;
+    }
+
+    .category h4 {
+      margin-bottom: 5px;
+      color: #2563eb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #6b7280;
     }
   </style>
 </head>
@@ -57,30 +94,74 @@
 <body>
 
 <header>
-  <h1>📰 Daily News Archive</h1>
-  <p>Access Current & Past Newspapers Anytime</p>
+  <h1>PUBLIC NEWS ARCHIVE</h1>
+  <p>Accessible Information | Organised Knowledge</p>
 </header>
 
 <div class="container">
 
-  <div class="card">
-    <h2>📚 Newspaper Archive</h2>
+  <!-- AI SUMMARY SECTION -->
+  <div class="section">
+    <h2>AI Categorised Summary</h2>
+
+    <div class="category">
+      <h4>Business</h4>
+      <p>Summary will appear here.</p>
+    </div>
+
+    <div class="category">
+      <h4>Economics</h4>
+      <p>Summary will appear here.</p>
+    </div>
+
+    <div class="category">
+      <h4>Politics</h4>
+      <p>Summary will appear here.</p>
+    </div>
+
+    <div class="category">
+      <h4>Editorial</h4>
+      <p>Summary will appear here.</p>
+    </div>
+
+    <div class="category">
+      <h4>Local</h4>
+      <p>Summary will appear here.</p>
+    </div>
+  </div>
+
+  <!-- ARCHIVE SECTION -->
+  <div class="section">
+    <h2>Newspaper Archive</h2>
+
+    <div class="month-title">February 2026</div>
 
     <a href="12-feb-2026.pdf" target="_blank" class="paper-link">
-      📄 12 February 2026
+      12 February 2026
     </a>
 
     <a href="11-feb-2026.pdf" target="_blank" class="paper-link">
-      📄 11 February 2026
+      11 February 2026
     </a>
 
     <a href="10-feb-2026.pdf" target="_blank" class="paper-link">
-      📄 10 February 2026
+      10 February 2026
+    </a>
+
+    <div class="month-title">January 2026</div>
+
+    <a href="31-jan-2026.pdf" target="_blank" class="paper-link">
+      31 January 2026
     </a>
 
   </div>
 
 </div>
+
+<footer>
+  This website is created strictly for educational purposes.
+  All rights belong to respective publishers.
+</footer>
 
 </body>
 </html>
