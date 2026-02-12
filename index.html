@@ -161,7 +161,31 @@
 <footer>
   Educational Use Only | Structured News Intelligence
 </footer>
+  
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyABxJPrMLeOfoEmCHg5amdVQXTdPor-fwA",
+    authDomain: "economic-research-archiv-f6ff8.firebaseapp.com",
+    projectId: "economic-research-archiv-f6ff8",
+    storageBucket: "economic-research-archiv-f6ff8.firebasestorage.app",
+    messagingSenderId: "240378406597",
+    appId: "1:240378406597:web:f274237883b4b3e80db2ac",
+    measurementId: "G-NY5R65KQS9"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+  
 <script>
   function showSection(id) {
     document.querySelectorAll('.section').forEach(sec => sec.style.display = "none");
