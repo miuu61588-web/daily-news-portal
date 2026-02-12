@@ -8,18 +8,12 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      transition: 0.4s;
-      background: #f4f6f9;
-      color: #111827;
-    }
-
-    .dark {
-      background: #0f172a;
-      color: #f1f5f9;
+      background: #fdf6f0;
+      color: #3e2723;
     }
 
     header {
-      background: #1e3a8a;
+      background: #8d6e63;
       color: white;
       padding: 20px;
       display: flex;
@@ -29,82 +23,69 @@
 
     nav a {
       margin-right: 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
       cursor: pointer;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
     }
 
     nav a:hover {
       text-decoration: underline;
     }
 
-    .toggle-btn {
-      background: white;
-      color: #1e3a8a;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 20px;
-    }
-
-    .section {
-      display: none;
-      animation: fade 0.4s ease;
-    }
-
-    @keyframes fade {
-      from {opacity: 0;}
-      to {opacity: 1;}
     }
 
     .card {
       background: white;
       padding: 20px;
-      border-radius: 14px;
+      border-radius: 12px;
       margin-bottom: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
-    .dark .card {
-      background: #1e293b;
-      box-shadow: none;
+    .section { display: none; }
+
+    select {
+      padding: 6px;
+      border-radius: 6px;
     }
 
-    .paper-link {
-      display: block;
-      padding: 8px;
-      margin: 6px 0;
-      background: #e5e7eb;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #111827;
-      transition: 0.3s;
+    iframe {
+      width: 100%;
+      height: 600px;
+      border-radius: 10px;
     }
 
-    .dark .paper-link {
-      background: #334155;
-      color: #f1f5f9;
-    }
-
-    .paper-link:hover {
-      transform: translateX(5px);
+    .admin-panel {
+      display: none;
+      background: #fff3e0;
+      border: 2px dashed #8d6e63;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 12px;
-      opacity: 0.7;
+      font-size: 13px;
+      opacity: 0.8;
     }
+
+    .subtabs button {
+      margin-right: 10px;
+      padding: 8px 12px;
+      border: none;
+      background: #d7ccc8;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .subtabs button:hover {
+      background: #bcaaa4;
+    }
+
   </style>
 </head>
 
@@ -114,10 +95,10 @@
   <div><strong>PUBLIC NEWS INTELLIGENCE</strong></div>
   <nav>
     <a onclick="showSection('home')">Home</a>
-    <a onclick="showSection('archive')">Archive</a>
+    <a onclick="showSection('analytics')">Analytics</a>
     <a onclick="showSection('about')">About</a>
+    <a onclick="adminLogin()">Admin</a>
   </nav>
-  <button class="toggle-btn" onclick="toggleMode()">Dark</button>
 </header>
 
 <div class="container">
@@ -125,98 +106,98 @@
   <!-- HOME -->
   <div id="home" class="section">
     <div class="card">
-      <h2>AI Categorised Summary</h2>
-      <p><strong>Business:</strong> Summary here.</p>
-      <p><strong>Economics:</strong> Summary here.</p>
-      <p><strong>Politics:</strong> Summary here.</p>
-      <p><strong>Editorial:</strong> Summary here.</p>
-      <p><strong>Local:</strong> Summary here.</p>
+      <h2>Select Month</h2>
+      <select onchange="changePDF(this.value)">
+        <option value="12-feb-2026.pdf">February 2026</option>
+      </select>
     </div>
-    
-  </div>
-  <div class="card">
-  <h2>Upload Newspaper PDF</h2>
-  <input type="file" id="pdfFile" accept="application/pdf">
-  <button onclick="uploadPDF()">Analyze</button>
-  <pre id="summaryOutput"></pre>
+
+    <div class="card">
+      <h2>Newspaper</h2>
+      <iframe id="pdfViewer" src="12-feb-2026.pdf#toolbar=0"></iframe>
+    </div>
   </div>
 
-  <!-- ARCHIVE -->
-  <div id="archive" class="section">
+  <!-- ANALYTICS -->
+  <div id="analytics" class="section">
     <div class="card">
-      <h2>February 2026</h2>
-      <a href="12-feb-2026.pdf" target="_blank" class="paper-link">12 February 2026</a>
-      <a href="11-feb-2026.pdf" target="_blank" class="paper-link">11 February 2026</a>
+      <h2>AI Analysis</h2>
+
+      <div class="subtabs">
+        <button onclick="showSubtab('business')">Business</button>
+        <button onclick="showSubtab('economics')">Economics</button>
+        <button onclick="showSubtab('politics')">Politics</button>
+        <button onclick="showSubtab('local')">Local</button>
+        <button onclick="showSubtab('others')">Others</button>
+      </div>
+
+      <div id="business" class="subcontent">Business analysis here.</div>
+      <div id="economics" class="subcontent" style="display:none;">Economics analysis here.</div>
+      <div id="politics" class="subcontent" style="display:none;">Politics analysis here.</div>
+      <div id="local" class="subcontent" style="display:none;">Local analysis here.</div>
+      <div id="others" class="subcontent" style="display:none;">Other analysis here.</div>
+
     </div>
   </div>
 
   <!-- ABOUT -->
   <div id="about" class="section">
     <div class="card">
-      <h2>About This Platform</h2>
+      <h2>About</h2>
       <p>This platform is created strictly for educational purposes.</p>
-      <p>All publication rights belong to respective publishers.</p>
-      <p>It aims to make structured news accessible for learning and analysis.</p>
+      <p>All rights belong to respective publishers.</p>
     </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel" class="card admin-panel">
+    <h2>Admin Control</h2>
+    <p>You are logged in as Admin.</p>
+    <button onclick="logout()">Logout</button>
   </div>
 
 </div>
 
 <footer>
-  Educational Use Only | Public Knowledge Initiative
+  Educational Use Only | Structured News Intelligence
 </footer>
 
 <script>
   function showSection(id) {
-    document.querySelectorAll('.section').forEach(sec => {
-      sec.style.display = "none";
-    });
+    document.querySelectorAll('.section').forEach(sec => sec.style.display = "none");
     document.getElementById(id).style.display = "block";
   }
 
-  function toggleMode() {
-    document.body.classList.toggle("dark");
+  function showSubtab(id) {
+    document.querySelectorAll('.subcontent').forEach(sec => sec.style.display = "none");
+    document.getElementById(id).style.display = "block";
+  }
+
+  function changePDF(file) {
+    document.getElementById("pdfViewer").src = file + "#toolbar=0";
+  }
+
+  function adminLogin() {
+    const code = prompt("Enter Admin Code:");
+    if (code === "HG@1525") {
+      localStorage.setItem("adminLoggedIn", "true");
+      document.getElementById("adminPanel").style.display = "block";
+    } else {
+      alert("Incorrect Code");
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem("adminLoggedIn");
+    document.getElementById("adminPanel").style.display = "none";
+  }
+
+  if (localStorage.getItem("adminLoggedIn") === "true") {
+    document.getElementById("adminPanel").style.display = "block";
   }
 
   showSection('home');
 </script>
-  </script>
-
-<script>
-async function uploadPDF() {
-  const fileInput = document.getElementById("pdfFile");
-  const file = fileInput.files[0];
-
-  if (!file) {
-    alert("Please select a PDF file.");
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = async function () {
-    const base64 = reader.result.split(",")[1];
-
-    const response = await fetch(
-      "https://news-ai-backend-smoky.vercel.app/api/summarize",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ file: base64 }),
-      }
-    );
-
-    const data = await response.json();
-    document.getElementById("summaryOutput").textContent =
-      data.summary || data.error;
-  };
-
-  reader.readAsDataURL(file);
-}
-</script>
-
-</body>
-</html>
 
 </body>
 </html>
