@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Daily News Portal</title>
+  <title>Daily News Archive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -37,18 +37,19 @@
       padding-bottom: 8px;
     }
 
-    a.button {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 6px;
+    .paper-link {
+      display: block;
+      margin: 10px 0;
+      padding: 12px;
+      background: #e0e7ff;
+      border-radius: 8px;
       text-decoration: none;
-      margin-top: 10px;
+      color: #1e3a8a;
+      font-weight: bold;
     }
 
-    a.button:hover {
-      background: #1e40af;
+    .paper-link:hover {
+      background: #c7d2fe;
     }
   </style>
 </head>
@@ -56,38 +57,30 @@
 <body>
 
 <header>
-  <h1>📰 Daily News Portal</h1>
-  <p>Bringing News to Every Corner</p>
+  <h1>📰 Daily News Archive</h1>
+  <p>Access Current & Past Newspapers Anytime</p>
 </header>
 
 <div class="container">
 
   <div class="card">
-    <h2>📄 Today's Newspaper</h2>
-    <p>Click below to read today's edition:</p>
-    <a href="newspaper.pdf" class="button" target="_blank">Read Newspaper</a>
-  </div>
+    <h2>📚 Newspaper Archive</h2>
 
-  <div class="card">
-    <h2>🤖 AI Categorised Summary</h2>
+    <a href="12-feb-2026.pdf" target="_blank" class="paper-link">
+      📄 12 February 2026
+    </a>
 
-    <h3>📊 Business</h3>
-    <p>Summary will appear here.</p>
+    <a href="11-feb-2026.pdf" target="_blank" class="paper-link">
+      📄 11 February 2026
+    </a>
 
-    <h3>📈 Economics</h3>
-    <p>Summary will appear here.</p>
+    <a href="10-feb-2026.pdf" target="_blank" class="paper-link">
+      📄 10 February 2026
+    </a>
 
-    <h3>🏛 Politics</h3>
-    <p>Summary will appear here.</p>
-
-    <h3>📝 Editorial</h3>
-    <p>Summary will appear here.</p>
-
-    <h3>📍 Local</h3>
-    <p>Summary will appear here.</p>
   </div>
 
 </div>
 
 </body>
-  </html>
+</html>
